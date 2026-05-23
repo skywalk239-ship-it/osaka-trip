@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>송씨네 오사카 여행</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:#f0e8d5; --cream2:#e2d4b8; --cream3:#c8b898;
+  --warm:#a08860; --warm2:#7a6440; --warm3:#5c4a2a;
+  --accent:#c4a068;
+  --glass:rgba(240,232,210,0.09); --glass2:rgba(240,232,210,0.06);
+  --gb:rgba(200,184,152,0.22); --gb2:rgba(200,184,152,0.14);
+  --shadow:rgba(0,0,0,0.35);
+  --text:#e8dcc8; --text2:#b8a888; --text3:#8a7a5a;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(160deg,#2a2318 0%,#1e1a12 40%,#251f14 70%,#2e2518 100%);min-height:100vh;display:flex;justify-content:center;align-items:flex-start;padding:24px 0 60px;position:relative;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+.app{width:100%;max-width:420px;padding:0 16px;position:relative;z-index:1}
+
+/* 언어토글 */
+.lang-toggle{display:flex;background:rgba(240,232,210,0.08);border:1px solid var(--gb);border-radius:20px;overflow:hidden;backdrop-filter:blur(12px)}
+.lang-toggle button{padding:5px 13px;border:none;background:transparent;color:var(--text3);font-size:11px;font-weight:700;font-family:'Do Hyeon',sans-serif;cursor:pointer;transition:all .2s;letter-spacing:.05em}
+.lang-toggle button.active{background:var(--warm);color:var(--cream)}
+
+/* 메인카드 */
+#screen-main{display:block}
+#screen-days{display:none}
+.main-card{background:var(--glass);backdrop-filter:blur(32px);border:1px solid var(--gb);border-radius:28px;padding:26px 20px 22px;position:relative;box-shadow:0 12px 48px var(--shadow),inset 0 1px 0 rgba(240,232,210,0.12)}
+.main-card-top{display:flex;justify-content:flex-end;margin-bottom:14px}
+.cat-main{display:flex;justify-content:center;margin-bottom:8px}
+.card-title{text-align:center;font-family:'Do Hyeon',sans-serif;font-size:24px;color:var(--cream);letter-spacing:-.01em;line-height:1.25;margin-bottom:3px}
+.card-title .hl{color:var(--accent)}
+.card-sub{text-align:center;font-size:11.5px;color:var(--text3);margin-bottom:20px;letter-spacing:.04em}
+.flight-badge{background:rgba(160,136,96,0.14);border:1px solid rgba(160,136,96,0.28);border-radius:12px;padding:10px 14px;margin-bottom:7px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text)}
+.flight-badge .dir{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.06em;flex-shrink:0}
+.dir-dep{background:rgba(160,136,96,0.28);color:var(--accent)}
+.dir-arr{background:rgba(120,100,64,0.28);color:var(--cream3)}
+.flight-badge .ftime{font-family:'Do Hyeon',sans-serif;font-size:14px;color:var(--cream)}
+.flight-badge .fno{margin-left:auto;font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.05em}
+.hotel-badge{background:rgba(140,116,72,0.14);border:1px solid rgba(140,116,72,0.26);border-radius:12px;padding:9px 14px;display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.hotel-badge .hicon{font-size:18px}
+.hotel-badge .hname{font-family:'Do Hyeon',sans-serif;font-size:15px;color:var(--cream)}
+.hotel-badge .haddr{font-size:10px;color:var(--text3);margin-top:1px}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px}
+.info-cell{background:var(--glass2);border:1px solid var(--gb2);border-radius:13px;padding:10px 12px}
+.info-cell .lbl{font-size:9.5px;color:var(--text3);font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:3px}
+.info-cell .val{font-family:'Do Hyeon',sans-serif;font-size:15px;color:var(--cream);line-height:1.3}
+.info-cell .val small{font-family:'Noto Sans KR',sans-serif;font-size:10px;color:var(--text3);font-weight:400}
+.cta-btn{width:100%;padding:13px;background:linear-gradient(135deg,var(--warm),var(--warm2));border:none;border-radius:14px;color:var(--cream);font-family:'Do Hyeon',sans-serif;font-size:17px;letter-spacing:.04em;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform .15s;display:flex;align-items:center;justify-content:center;gap:8px}
+.cta-btn:active{transform:scale(0.97)}
+
+/* 일정화면 */
+.days-header{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.back-btn{background:var(--glass);border:1px solid var(--gb);border-radius:11px;padding:7px 13px;font-family:'Do Hyeon',sans-serif;font-size:13px;color:var(--text2);cursor:pointer;backdrop-filter:blur(12px)}
+.days-title{font-family:'Do Hyeon',sans-serif;font-size:17px;color:var(--cream)}
+.tab-bar{position:sticky;top:8px;z-index:20;display:flex;gap:5px;margin-bottom:12px;background:rgba(30,26,18,0.78);backdrop-filter:blur(20px);border:1px solid var(--gb);border-radius:16px;padding:4px}
+.tab-btn{flex:1;padding:8px 4px;border:none;background:transparent;border-radius:12px;font-family:'Do Hyeon',sans-serif;font-size:12.5px;color:var(--text3);cursor:pointer;transition:all .2s;display:flex;flex-direction:column;align-items:center;gap:1px}
+.tab-btn .td{font-size:11px;opacity:.65}
+.tab-btn .tn{font-size:13px}
+.tab-btn.active{background:var(--warm);color:var(--cream);box-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.tab-btn.active .td{opacity:.8}
+.day-panel{display:none}
+.day-panel.active{display:block}
+.day-header-card{background:var(--glass);border:1px solid var(--gb);border-radius:18px;padding:14px 16px;margin-bottom:10px;backdrop-filter:blur(20px);display:flex;align-items:center;gap:12px;box-shadow:0 4px 24px var(--shadow)}
+.day-num{font-family:'Do Hyeon',sans-serif;font-size:38px;color:var(--accent);line-height:1}
+.day-info .di-date{font-family:'Do Hyeon',sans-serif;font-size:17px;color:var(--cream)}
+.day-info .di-theme{font-size:11.5px;color:var(--text3);margin-top:2px}
+
+/* 타임라인 */
+.timeline{position:relative;padding-left:50px}
+.timeline::before{content:'';position:absolute;left:19px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(to bottom,rgba(160,136,96,.4),rgba(160,136,96,.04))}
+
+/* 이벤트 카드 */
+.ev{position:relative;margin-bottom:9px;background:var(--glass);border:1px solid var(--gb2);border-radius:13px;padding:9px 11px 9px 11px;backdrop-filter:blur(14px);box-shadow:0 2px 10px rgba(0,0,0,0.18)}
+.ev::before{content:'';position:absolute;left:-34px;top:50%;transform:translateY(-50%);width:9px;height:9px;background:var(--warm3);border:2px solid #1e1a12;border-radius:50%;box-shadow:0 0 0 2.5px rgba(160,136,96,0.2)}
+.ev.hi::before{width:12px;height:12px;left:-35.5px;background:var(--accent);box-shadow:0 0 0 3px rgba(196,160,104,0.25)}
+.ev-inner{padding-right:32px} /* 수정버튼 공간 */
+.ev-time{font-family:'Do Hyeon',sans-serif;font-size:11.5px;color:var(--accent);margin-bottom:2px;letter-spacing:.04em}
+.ev-row{display:flex;align-items:flex-start;gap:7px}
+.ev-tag{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:2px;letter-spacing:.04em}
+.tag-food{background:rgba(180,110,60,0.22);color:#c88850}
+.tag-drink{background:rgba(70,140,80,0.22);color:#70aa78}
+.tag-shop{background:rgba(130,90,180,0.22);color:#a880d0}
+.tag-hotel{background:rgba(180,150,50,0.22);color:#c8a840}
+.tag-transport{background:rgba(100,120,100,0.22);color:#90a888}
+.tag-sight{background:rgba(160,100,80,0.22);color:#b88870}
+.tag-reserve{background:rgba(160,80,80,0.22);color:#b87070}
+.tag-checkout{background:rgba(160,130,60,0.22);color:#b8a050}
+.ev-title{font-family:'Do Hyeon',sans-serif;font-size:14.5px;color:var(--cream);line-height:1.3}
+.ev-desc{font-size:11px;color:var(--text3);margin-top:3px;line-height:1.5}
+.ev-loc{display:flex;align-items:center;gap:3px;margin-top:3px;font-size:10px;color:var(--text3)}
+.sec-label{font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--text3);text-transform:uppercase;margin:12px 0 5px;opacity:.6}
+
+/* 수정 버튼 (카드 우상단) */
+.ev-edit-btn{position:absolute;top:7px;right:8px;width:24px;height:24px;border:none;background:rgba(196,160,104,0.15);border-radius:7px;color:var(--accent);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.ev:hover .ev-edit-btn,.ev:focus-within .ev-edit-btn{opacity:1}
+/* 모바일: 항상 보임 */
+@media (hover:none){.ev-edit-btn{opacity:0.55}}
+
+/* + 일정 추가 버튼 */
+.add-ev-btn{width:100%;margin-top:10px;padding:10px;background:rgba(196,160,104,0.08);border:1.5px dashed rgba(196,160,104,0.3);border-radius:12px;color:var(--text3);font-family:'Do Hyeon',sans-serif;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s,border-color .15s}
+.add-ev-btn:hover{background:rgba(196,160,104,0.14);border-color:rgba(196,160,104,0.5)}
+.add-ev-btn:active{transform:scale(0.98)}
+
+/* 퍼슨 배지 */
+.pbadge{display:inline-block;font-size:9px;font-weight:700;padding:1px 6px;border-radius:5px;margin-left:4px;vertical-align:middle}
+.pb-all{background:rgba(160,136,96,0.2);color:var(--warm)}
+.pb-jeha{background:rgba(90,130,160,0.2);color:#7aaac0}
+.pb-hyejin{background:rgba(160,90,120,0.2);color:#c08098}
+
+/* 고양이 & 푸터 */
+.cat-float{text-align:right;padding-right:6px;margin-bottom:-4px;margin-top:6px;opacity:.4}
+.hotel-footer{margin-top:14px;background:rgba(140,116,72,0.1);border:1px solid rgba(140,116,72,0.22);border-radius:12px;padding:10px 13px;font-size:11px;color:var(--text3)}
+.hotel-footer strong{font-family:'Do Hyeon',sans-serif;font-size:13px;color:var(--text);display:block;margin-bottom:2px}
+.ending{text-align:center;margin-top:18px;padding:14px}
+.ending-msg{font-family:'Do Hyeon',sans-serif;font-size:15px;color:var(--text3);margin-top:8px}
+
+/* ===== 모달 ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:100;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal-box{width:100%;max-width:420px;background:#2a2318;border:1px solid var(--gb);border-radius:24px 24px 0 0;padding:24px 20px 32px;box-shadow:0 -8px 40px rgba(0,0,0,0.5)}
+.modal-title{font-family:'Do Hyeon',sans-serif;font-size:18px;color:var(--cream);margin-bottom:18px;display:flex;align-items:center;justify-content:space-between}
+.modal-close{background:rgba(240,232,210,0.1);border:none;border-radius:8px;width:28px;height:28px;color:var(--text3);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-field{margin-bottom:13px}
+.modal-field label{display:block;font-size:10.5px;font-weight:700;color:var(--text3);letter-spacing:.07em;text-transform:uppercase;margin-bottom:5px}
+.modal-field input,.modal-field textarea,.modal-field select{width:100%;background:rgba(240,232,210,0.07);border:1px solid var(--gb);border-radius:10px;padding:9px 12px;color:var(--cream);font-family:'Noto Sans KR',sans-serif;font-size:13px;outline:none}
+.modal-field textarea{resize:none;height:60px;line-height:1.5}
+.modal-field input:focus,.modal-field textarea:focus,.modal-field select:focus{border-color:var(--accent)}
+.modal-field select option{background:#2a2318;color:var(--cream)}
+.modal-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modal-btns{display:flex;gap:8px;margin-top:18px}
+.btn-save{flex:1;padding:12px;background:linear-gradient(135deg,var(--warm),var(--warm2));border:none;border-radius:12px;color:var(--cream);font-family:'Do Hyeon',sans-serif;font-size:15px;cursor:pointer}
+.btn-delete{padding:12px 16px;background:rgba(160,80,80,0.2);border:1px solid rgba(160,80,80,0.3);border-radius:12px;color:#b87070;font-family:'Do Hyeon',sans-serif;font-size:15px;cursor:pointer}
+.btn-cancel{padding:12px 16px;background:rgba(240,232,210,0.07);border:1px solid var(--gb);border-radius:12px;color:var(--text3);font-family:'Do Hyeon',sans-serif;font-size:15px;cursor:pointer}
+
+/* 드래그 핸들 */
+.modal-handle{width:36px;height:4px;background:rgba(240,232,210,0.15);border-radius:2px;margin:0 auto 16px}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ===== 메인 카드 ===== -->
+<div id="screen-main">
+  <div class="main-card">
+    <div class="main-card-top">
+      <div class="lang-toggle">
+        <button class="active" onclick="setLang('ko')">KO</button>
+        <button onclick="setLang('jp')">JP</button>
+      </div>
+    </div>
+    <div class="cat-main">
+      <svg viewBox="0 0 220 120" width="160" height="88" xmlns="http://www.w3.org/2000/svg">
+        <path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"/>
+        <ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"/>
+        <polygon points="44,78 34,48 60,68" fill="#111"/>
+        <polygon points="128,72 136,42 154,66" fill="#111"/>
+        <ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"/>
+        <circle cx="76" cy="82" r="13" fill="white"/>
+        <circle cx="76" cy="82" r="7" fill="#111"/>
+        <circle cx="80" cy="78" r="3" fill="white"/>
+        <circle cx="120" cy="80" r="13" fill="white"/>
+        <circle cx="120" cy="80" r="7" fill="#111"/>
+        <circle cx="124" cy="76" r="3" fill="white"/>
+      </svg>
+    </div>
+    <div class="card-title" data-ko="송씨네 가족<br><span class='hl'>오사카 여행 🍜</span>" data-jp="ソン家<br><span class='hl'>大阪旅行 🍜</span>">송씨네 가족<br><span class="hl">오사카 여행 🍜</span></div>
+    <div class="card-sub" data-ko="2025 · 6월 6일(토) ~ 8일(월) · 2박 3일" data-jp="2025 · 6月6日(土)〜8日(月) · 2泊3日">2025 · 6월 6일(토) ~ 8일(월) · 2박 3일</div>
+    <div class="flight-badge">
+      <span class="dir dir-dep" data-ko="출국" data-jp="出国">출국</span>
+      <span style="color:var(--text2)">청주 → 간사이</span>
+      <span class="ftime">15:50 → 17:35</span>
+      <span class="fno">RF318</span>
+    </div>
+    <div class="flight-badge">
+      <span class="dir dir-arr" data-ko="귀국" data-jp="帰国">귀국</span>
+      <span style="color:var(--text2)">간사이 → 대구</span>
+      <span class="ftime">10:40 → 12:10</span>
+      <span class="fno">TW312</span>
+    </div>
+    <div class="hotel-badge" style="margin-top:10px">
+      <span class="hicon">🏨</span>
+      <div>
+        <div class="hname">Attic0475</div>
+        <div class="haddr">4 Chome-7-5 Namba, Chuo Ward, Osaka</div>
+      </div>
+    </div>
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="lbl" data-ko="일정" data-jp="日程">일정</div>
+        <div class="val">2박 3일<br><small>Day 1~3</small></div>
+      </div>
+      <div class="info-cell">
+        <div class="lbl" data-ko="베이스" data-jp="拠点">베이스</div>
+        <div class="val">難波<br><small>난바, 오사카</small></div>
+      </div>
+      <div class="info-cell">
+        <div class="lbl" data-ko="멤버" data-jp="メンバー">멤버</div>
+        <div class="val" style="font-size:12.5px">엄빠 + 제하 + 혜진</div>
+      </div>
+      <div class="info-cell">
+        <div class="lbl" data-ko="숙소" data-jp="宿泊">숙소</div>
+        <div class="val" style="font-size:13px">Attic0475<br><small>난바 센트럴</small></div>
+      </div>
+    </div>
+    <button class="cta-btn" onclick="openDays()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span data-ko="일정 보기 →" data-jp="スケジュールを見る →">일정 보기 →</span>
+    </button>
+  </div>
+</div>
+
+<!-- ===== 일정 화면 ===== -->
+<div id="screen-days">
+  <div class="days-header">
+    <button class="back-btn" onclick="goBack()">← <span data-ko="메인" data-jp="メイン">메인</span></button>
+    <span class="days-title" data-ko="🐱 송씨네 오사카" data-jp="🐱 ソン家 大阪">🐱 송씨네 오사카</span>
+    <div class="lang-toggle" style="margin-left:auto">
+      <button class="active" onclick="setLang('ko')">KO</button>
+      <button onclick="setLang('jp')">JP</button>
+    </div>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchDay(0)"><span class="td">DAY 1</span><span class="tn">6/6 토</span></button>
+    <button class="tab-btn" onclick="switchDay(1)"><span class="td">DAY 2</span><span class="tn">6/7 일</span></button>
+    <button class="tab-btn" onclick="switchDay(2)"><span class="td">DAY 3</span><span class="tn">6/8 월</span></button>
+  </div>
+  <div id="day-panels"></div>
+</div>
+
+<!-- ===== 모달 ===== -->
+<div class="modal-overlay" id="modal" onclick="modalBgClick(event)">
+  <div class="modal-box">
+    <div class="modal-handle"></div>
+    <div class="modal-title">
+      <span id="modal-title-text">일정 수정</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-row">
+      <div class="modal-field">
+        <label>시간</label>
+        <input id="m-time" type="text" placeholder="예) 14:30">
+      </div>
+      <div class="modal-field">
+        <label>카테고리</label>
+        <select id="m-tag">
+          <option value="tag-food">🍜 식사</option>
+          <option value="tag-transport">🚌 이동</option>
+          <option value="tag-sight">🎡 관광/체험</option>
+          <option value="tag-shop">🛍 쇼핑</option>
+          <option value="tag-hotel">🏨 숙박</option>
+          <option value="tag-reserve">✈️ 예약완료</option>
+          <option value="tag-checkout">🔑 체크아웃</option>
+          <option value="tag-drink">🍺 음료/술</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-field">
+      <label>제목</label>
+      <input id="m-title" type="text" placeholder="일정 제목">
+    </div>
+    <div class="modal-field">
+      <label>설명 (선택)</label>
+      <textarea id="m-desc" placeholder="추가 설명, 메모"></textarea>
+    </div>
+    <div class="modal-field">
+      <label>장소 (선택)</label>
+      <input id="m-loc" type="text" placeholder="📍 장소명">
+    </div>
+    <div class="modal-btns">
+      <button class="btn-save" onclick="saveEvent()">저장</button>
+      <button class="btn-delete" id="btn-delete" onclick="deleteEvent()" style="display:none">삭제</button>
+      <button class="btn-cancel" onclick="closeModal()">취소</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- .app -->
+
+<script>
+// ============================================================
+// 데이터
+// ============================================================
+const DAYS = [
+  {
+    date:"6월 6일 (토)", dateJp:"6月6日（土）",
+    theme:"✈️ 출국 → 난바 입성", themeJp:"✈️ 出国 → なんば上陸",
+    events:[
+      {time:"13:50",tag:"tag-transport",hi:true, title:"청주 국제공항 집결",titleJp:"清州国際空港 集合",desc:"공항에서 엄빠랑 만나기 👨‍👩‍👦",descJp:"ご両親と合流 👨‍👩‍👦",loc:"청주 국제공항",badge:"pb-all",badgeText:"전원"},
+      {time:"14:00",tag:"tag-transport",hi:false,title:"비행기 체크인 & 수하물 붙이기",titleJp:"搭乗手続き・手荷物預け",desc:"",descJp:"",loc:""},
+      {time:"14:20",tag:"tag-food",hi:false,title:"공항 내 점심식사",titleJp:"空港内ランチ",desc:"",descJp:"",loc:""},
+      {time:"15:50",tag:"tag-reserve",hi:true, title:"✈️ RF318 — 청주 출발",titleJp:"✈️ RF318 — 清州 出発",desc:"청주 국제공항 → 간사이 국제공항 T1",descJp:"清州国際空港 → 関西国際空港 T1",loc:""},
+      {time:"17:35",tag:"tag-reserve",hi:true, title:"🛬 간사이 국제공항 도착",titleJp:"🛬 関西国際空港 到着",desc:"입국 심사 + 짐 수령 (약 40분)",descJp:"入国審査・荷物受取（約40分）",loc:""},
+      {time:"18:30",tag:"tag-transport",hi:false,title:"난카이 라피트 or 공항급행 탑승",titleJp:"南海ラピートまたは空港急行",desc:"간사이공항 → 난바 약 40~50분",descJp:"関西空港 → なんば 約40〜50分",loc:"간사이공항 전철 승강장"},
+      {time:"19:30",tag:"tag-hotel",hi:true, title:"숙소 체크인 🏨",titleJp:"チェックイン 🏨",desc:"",descJp:"",loc:"Attic0475, 난바",badge:"pb-all",badgeText:"전원"},
+      {time:"20:30",tag:"tag-sight",hi:true, title:"도톤보리 리버크루즈 🚢",titleJp:"道頓堀 リバークルーズ 🚢",desc:"",descJp:"",loc:"도톤보리",badge:"pb-hyejin",badgeText:"혜진"},
+      {time:"21:00",tag:"tag-sight",hi:false,title:"도톤보리 야경감상 🌃",titleJp:"道頓堀 夜景鑑賞 🌃",desc:"",descJp:"",loc:"에비스바시 다리",badge:"pb-hyejin",badgeText:"혜진"},
+      {time:"21:30",tag:"tag-food",hi:true, title:"라이프 저녁 장보기 🛒",titleJp:"ライフ 夕食買い物 🛒",desc:"",descJp:"",loc:"라이프 센트럴스퀘어 난바점"}
+    ]
+  },
+  {
+    date:"6월 7일 (일)", dateJp:"6月7日（日）",
+    theme:"👘 기모노 × 우메다 × 하루카스", themeJp:"👘 着物 × 梅田 × ハルカス",
+    events:[
+      {time:"09:30",tag:"tag-transport",hi:false,title:"숙소 출발",titleJp:"宿泊先 出発",desc:"닛폰바시역 → 덴진바시스지로쿠초메",descJp:"日本橋駅 → 天神橋筋六丁目",loc:""},
+      {time:"10:00",tag:"tag-sight",hi:true, title:"기모노 체험 👘",titleJp:"着物体験 👘",desc:"",descJp:"",loc:"오사카 시립주택 박물관"},
+      {time:"11:30",tag:"tag-food",hi:true, title:"덴진바시 상점가 점심 🍜",titleJp:"天神橋筋商店街 ランチ 🍜",desc:"",descJp:"",loc:"덴진바시상점가"},
+      {time:"14:00",tag:"tag-transport",hi:false,title:"우메다로 이동",titleJp:"梅田へ移動",desc:"텐마역 → 오사카역",descJp:"天満駅 → 大阪駅",loc:""},
+      {time:"14:30",tag:"tag-shop",hi:true, title:"한큐백화점 & 우메다공중정원 🌿",titleJp:"阪急百貨店 & 梅田スカイビル 🌿",desc:"",descJp:"",loc:"우메다"},
+      {time:"17:30",tag:"tag-transport",hi:false,title:"덴노지로 이동",titleJp:"天王寺へ移動",desc:"우메다 미도스지선 → 덴노지",descJp:"梅田 御堂筋線 → 天王寺",loc:""},
+      {time:"18:00",tag:"tag-sight",hi:true, title:"하루카스 300 전망대 야경 🌆",titleJp:"ハルカス300 展望台 夜景 🌆",desc:"",descJp:"",loc:"아베노 하루카스, 덴노지"},
+      {time:"19:30",tag:"tag-food",hi:true, title:"아베노 저녁 식사 🍽️",titleJp:"あべの 夕食 🍽️",desc:"551호라이 / 이치란 / 다루마도조 등",descJp:"551蓬莱 / 一蘭 / だるまどじょう など",loc:""},
+      {time:"20:00",tag:"tag-transport",hi:false,title:"난바 복귀",titleJp:"なんばへ帰還",desc:"덴노지 미도스지선 → 난바",descJp:"天王寺 御堂筋線 → なんば",loc:""},
+      {time:"20:30",tag:"tag-shop",hi:false,title:"난바 쇼핑 🛍️",titleJp:"なんば ショッピング 🛍️",desc:"다이소 / 돈키호테 / 다이코쿠드럭스토어",descJp:"ダイソー / ドン・キホーテ / ダイコクドラッグ",loc:""}
+    ]
+  },
+  {
+    date:"6월 8일 (월)", dateJp:"6月8日（月）",
+    theme:"⛩️ 야사카 신사 → 귀국", themeJp:"⛩️ 八坂神社 → 帰国",
+    events:[
+      {time:"06:00",tag:"tag-sight",hi:true, title:"난바 야사카 신사 구경 ⛩️",titleJp:"難波 八坂神社 参拝 ⛩️",desc:"",descJp:"",loc:"야사카 신사, 난바"},
+      {time:"07:00",tag:"tag-checkout",hi:true, title:"숙소 체크아웃 & 공항 이동",titleJp:"チェックアウト & 空港へ",desc:"난바역 → 난카이 라피트 탑승 (약 40분)",descJp:"なんば駅 → 南海ラピート（約40分）",loc:"",badge:"pb-all",badgeText:"전원"},
+      {time:"07:30",tag:"tag-food",hi:false,title:"아침식사 🍙",titleJp:"朝食 🍙",desc:"편의점 or 공항 내 식당",descJp:"コンビニ or 空港内レストラン",loc:""},
+      {time:"08:00",tag:"tag-reserve",hi:true, title:"간사이 국제공항 T1 도착",titleJp:"関西国際空港 T1 到着",desc:"출국 수속 & 면세점 구경",descJp:"出国手続き & 免税店",loc:"간사이공항 T1"},
+      {time:"10:40",tag:"tag-reserve",hi:true, title:"✈️ TW312 — 간사이 출발",titleJp:"✈️ TW312 — 関西 出発",desc:"간사이 국제공항 T1 → 대구 국제공항",descJp:"",loc:""},
+      {time:"12:10",tag:"tag-reserve",hi:true, title:"🛬 대구 국제공항 도착",titleJp:"🛬 大邱国際空港 到着",desc:"",descJp:"",loc:""}
+    ]
+  }
+];
+
+const TAG_LABELS = {
+  "tag-food":"식사","tag-transport":"이동","tag-sight":"관광",
+  "tag-shop":"쇼핑","tag-hotel":"숙박","tag-reserve":"예약",
+  "tag-checkout":"체크아웃","tag-drink":"음료"
+};
+const TAG_LABELS_JP = {
+  "tag-food":"食事","tag-transport":"移動","tag-sight":"観光",
+  "tag-shop":"ショッピング","tag-hotel":"宿泊","tag-reserve":"予約",
+  "tag-checkout":"チェックアウト","tag-drink":"飲み物"
+};
+
+// ============================================================
+// 상태
+// ============================================================
+let currentLang = 'ko';
+let currentDay = 0;
+let modalMode = null; // 'edit' | 'add'
+let editTarget = null; // {dayIdx, evIdx}
+
+// ============================================================
+// 렌더
+// ============================================================
+function renderAll() {
+  const container = document.getElementById('day-panels');
+  container.innerHTML = '';
+  DAYS.forEach((day, di) => {
+    const panel = document.createElement('div');
+    panel.className = 'day-panel' + (di === currentDay ? ' active' : '');
+    panel.id = 'panel-' + di;
+    panel.innerHTML = renderDay(day, di);
+    container.appendChild(panel);
+  });
+}
+
+function renderDay(day, di) {
+  const isJp = currentLang === 'jp';
+  const dateText = isJp ? day.dateJp : day.date;
+  const themeText = isJp ? day.themeJp : day.theme;
+
+  let html = `
+    <div class="day-header-card">
+      <div class="day-num">0${di+1}</div>
+      <div class="day-info">
+        <div class="di-date">${dateText}</div>
+        <div class="di-theme">${themeText}</div>
+      </div>
+    </div>
+    <div class="timeline">`;
+
+  day.events.forEach((ev, ei) => {
+    html += renderEvent(ev, di, ei);
+  });
+
+  html += `</div>
+    <button class="add-ev-btn" onclick="openAddModal(${di})">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      일정 추가
+    </button>`;
+
+  const catSvg = `<div class="cat-float"><svg viewBox="0 0 220 120" width="50" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"/><ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"/><polygon points="44,78 34,48 60,68" fill="#111"/><polygon points="128,72 136,42 154,66" fill="#111"/><ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"/><circle cx="76" cy="82" r="13" fill="white"/><circle cx="76" cy="82" r="7" fill="#111"/><circle cx="80" cy="78" r="3" fill="white"/><circle cx="120" cy="80" r="13" fill="white"/><circle cx="120" cy="80" r="7" fill="#111"/><circle cx="124" cy="76" r="3" fill="white"/></svg></div>`;
+
+  if (di === 2) {
+    html += catSvg + `<div class="ending"><svg viewBox="0 0 220 120" width="64" height="36" xmlns="http://www.w3.org/2000/svg" style="opacity:.35"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#c8b898"/><ellipse cx="100" cy="112" rx="85" ry="28" fill="#c8b898"/><polygon points="44,78 34,48 60,68" fill="#c8b898"/><polygon points="128,72 136,42 154,66" fill="#c8b898"/><ellipse cx="98" cy="88" rx="64" ry="38" fill="#c8b898"/><circle cx="76" cy="82" r="13" fill="rgba(30,26,18,0.9)"/><circle cx="76" cy="82" r="7" fill="#c8b898"/><circle cx="80" cy="78" r="3" fill="rgba(30,26,18,0.9)"/><circle cx="120" cy="80" r="13" fill="rgba(30,26,18,0.9)"/><circle cx="120" cy="80" r="7" fill="#c8b898"/><circle cx="124" cy="76" r="3" fill="rgba(30,26,18,0.9)"/></svg><div class="ending-msg">즐거운 송씨네 오사카 여행이었냥~ 🐾</div></div>`;
+  } else {
+    html += catSvg + `<div class="hotel-footer"><strong>🏨 Attic0475</strong>4 Chome-7-5 Namba, Chuo Ward, Osaka, 542-0076</div>`;
+  }
+
+  return html;
+}
+
+function renderEvent(ev, di, ei) {
+  const isJp = currentLang === 'jp';
+  const title = isJp && ev.titleJp ? ev.titleJp : ev.title;
+  const desc  = isJp && ev.descJp  ? ev.descJp  : ev.desc;
+  const tagLabel = isJp ? (TAG_LABELS_JP[ev.tag]||ev.tag) : (TAG_LABELS[ev.tag]||ev.tag);
+  const hiClass = ev.hi ? ' hi' : '';
+
+  let badgeHtml = '';
+  if (ev.badge) badgeHtml = `<div style="margin-top:4px"><span class="pbadge ${ev.badge}">${ev.badgeText}</span></div>`;
+
+  let locHtml = '';
+  if (ev.loc) locHtml = `<div class="ev-loc">📍 ${ev.loc}</div>`;
+
+  let descHtml = '';
+  if (desc) descHtml = `<div class="ev-desc">${desc}</div>`;
+
+  return `
+    <div class="ev${hiClass}">
+      <button class="ev-edit-btn" onclick="openEditModal(${di},${ei})" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">${ev.time}</div>
+        <div class="ev-row">
+          <span class="ev-tag ${ev.tag}">${tagLabel}</span>
+          <div>
+            <div class="ev-title">${title}</div>
+            ${descHtml}
+          </div>
+        </div>
+        ${locHtml}
+        ${badgeHtml}
+      </div>
+    </div>`;
+}
+
+// ============================================================
+// 모달
+// ============================================================
+function openEditModal(di, ei) {
+  modalMode = 'edit';
+  editTarget = {di, ei};
+  const ev = DAYS[di].events[ei];
+  document.getElementById('modal-title-text').textContent = '일정 수정';
+  document.getElementById('m-time').value = ev.time;
+  document.getElementById('m-tag').value = ev.tag;
+  document.getElementById('m-title').value = ev.title;
+  document.getElementById('m-desc').value = ev.desc || '';
+  document.getElementById('m-loc').value = ev.loc || '';
+  document.getElementById('btn-delete').style.display = 'block';
+  document.getElementById('modal').classList.add('open');
+}
+
+function openAddModal(di) {
+  modalMode = 'add';
+  editTarget = {di, ei: null};
+  document.getElementById('modal-title-text').textContent = '일정 추가';
+  document.getElementById('m-time').value = '';
+  document.getElementById('m-tag').value = 'tag-food';
+  document.getElementById('m-title').value = '';
+  document.getElementById('m-desc').value = '';
+  document.getElementById('m-loc').value = '';
+  document.getElementById('btn-delete').style.display = 'none';
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function modalBgClick(e) {
+  if (e.target === document.getElementById('modal')) closeModal();
+}
+
+function saveEvent() {
+  const time  = document.getElementById('m-time').value.trim();
+  const tag   = document.getElementById('m-tag').value;
+  const title = document.getElementById('m-title').value.trim();
+  const desc  = document.getElementById('m-desc').value.trim();
+  const loc   = document.getElementById('m-loc').value.trim();
+  if (!title) { alert('제목을 입력해줘!'); return; }
+
+  const {di, ei} = editTarget;
+  if (modalMode === 'edit') {
+    const ev = DAYS[di].events[ei];
+    ev.time = time || ev.time;
+    ev.tag = tag;
+    ev.title = title;
+    ev.titleJp = title; // 일본어는 동일하게 유지
+    ev.desc = desc;
+    ev.descJp = desc;
+    ev.loc = loc;
+  } else {
+    // 추가 후 시간 순 정렬
+    DAYS[di].events.push({
+      time: time || '00:00', tag, hi: false,
+      title, titleJp: title,
+      desc, descJp: desc, loc
+    });
+    DAYS[di].events.sort((a,b) => a.time.localeCompare(b.time));
+  }
+  closeModal();
+  renderAll();
+}
+
+function deleteEvent() {
+  if (!confirm('이 일정을 삭제할까요?')) return;
+  const {di, ei} = editTarget;
+  DAYS[di].events.splice(ei, 1);
+  closeModal();
+  renderAll();
+}
+
+// ============================================================
+// 네비게이션 & 언어
+// ============================================================
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-toggle button').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+  document.querySelectorAll('[data-ko]').forEach(el => {
+    const txt = el.getAttribute('data-' + lang) || el.getAttribute('data-ko');
+    el.innerHTML = txt;
+  });
+  document.documentElement.lang = lang === 'jp' ? 'ja' : 'ko';
+  renderAll();
+}
+
+function openDays() {
+  document.getElementById('screen-main').style.display = 'none';
+  document.getElementById('screen-days').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function goBack() {
+  document.getElementById('screen-days').style.display = 'none';
+  document.getElementById('screen-main').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function switchDay(idx) {
+  currentDay = idx;
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i === idx));
+  document.querySelectorAll('.day-panel').forEach((p,i) => p.classList.toggle('active', i === idx));
+  window.scrollTo(0,0);
+}
+
+// 초기 렌더
+renderAll();
+</script>
+</body>
+</html>
