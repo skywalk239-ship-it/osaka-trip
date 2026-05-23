@@ -140,6 +140,28 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 /* 드래그 핸들 */
 .modal-handle{width:36px;height:4px;background:rgba(240,232,210,0.15);border-radius:2px;margin:0 auto 16px}
+
+/* ===== 저장 상태 토스트 ===== */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);background:#2a2318;border:1px solid var(--gb);border-radius:14px;padding:10px 18px;font-family:'Do Hyeon',sans-serif;font-size:14px;color:var(--cream);z-index:200;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,0.4)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.ok{border-color:rgba(160,180,100,0.4);color:#b8d070}
+.toast.err{border-color:rgba(180,80,80,0.4);color:#d07070}
+
+/* ===== 설정 버튼 (메인카드 상단) ===== */
+.setting-btn{background:rgba(240,232,210,0.08);border:1px solid var(--gb);border-radius:10px;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text3);transition:background .15s}
+.setting-btn:hover{background:rgba(240,232,210,0.14)}
+
+/* 설정 모달 */
+.setting-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:150;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
+.setting-modal-overlay.open{display:flex}
+.setting-box{width:100%;max-width:420px;background:#2a2318;border:1px solid var(--gb);border-radius:24px 24px 0 0;padding:24px 20px 36px;box-shadow:0 -8px 40px rgba(0,0,0,0.5)}
+.setting-status{display:flex;align-items:center;gap:8px;padding:10px 12px;border-radius:10px;margin-bottom:16px;font-size:12px}
+.setting-status.connected{background:rgba(100,160,80,0.15);border:1px solid rgba(100,160,80,0.3);color:#90c870}
+.setting-status.disconnected{background:rgba(180,80,80,0.12);border:1px solid rgba(180,80,80,0.25);color:#c07070}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.dot-ok{background:#80c050}
+.dot-no{background:#c05050}
+.token-hint{font-size:10.5px;color:var(--text3);line-height:1.6;margin-bottom:14px;padding:10px 12px;background:rgba(240,232,210,0.05);border-radius:10px;border:1px solid var(--gb2)}
 </style>
 </head>
 <body>
@@ -148,7 +170,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 <!-- ===== 메인 카드 ===== -->
 <div id="screen-main">
   <div class="main-card">
-    <div class="main-card-top">
+    <div class="main-card-top" style="justify-content:space-between">
+      <button class="setting-btn" onclick="openSetting()" title="GitHub 연동 설정">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </button>
       <div class="lang-toggle">
         <button class="active" onclick="setLang('ko')">KO</button>
         <button onclick="setLang('jp')">JP</button>
@@ -280,9 +305,50 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   </div>
 </div>
 
+<!-- ===== 설정 모달 ===== -->
+<div class="setting-modal-overlay" id="setting-modal" onclick="settingBgClick(event)">
+  <div class="setting-box">
+    <div class="modal-handle"></div>
+    <div class="modal-title">
+      <span>⚙️ GitHub 연동 설정</span>
+      <button class="modal-close" onclick="closeSetting()">✕</button>
+    </div>
+    <div id="setting-status-area"></div>
+    <div class="token-hint">
+      🔑 GitHub Personal Access Token을 입력하면 일정 수정사항이 자동으로 저장돼.<br>
+      토큰은 이 기기의 브라우저에만 보관되고 외부로 전송되지 않아.<br><br>
+      <strong style="color:var(--text2)">토큰 발급:</strong> github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens → <strong style="color:var(--accent)">repo Contents: Read and write</strong> 권한 필요
+    </div>
+    <div class="modal-field">
+      <label>GitHub Token</label>
+      <input id="s-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off">
+    </div>
+    <div class="modal-btns">
+      <button class="btn-save" onclick="saveToken()">저장</button>
+      <button class="btn-delete" onclick="clearToken()" style="display:block">토큰 삭제</button>
+      <button class="btn-cancel" onclick="closeSetting()">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- 토스트 -->
+<div class="toast" id="toast"></div>
+
 </div><!-- .app -->
 
 <script>
+// ============================================================
+// GitHub 설정 (레포 정보 — 토큰은 localStorage)
+// ============================================================
+const GH_OWNER = 'skywalk239-ship-it';
+const GH_REPO  = 'osaka-trip';
+const GH_FILE  = 'index.html';
+const GH_BRANCH= 'main';
+
+function getToken() { return localStorage.getItem('osaka_gh_token') || ''; }
+function setToken(t){ localStorage.setItem('osaka_gh_token', t); }
+function clearTokenStorage(){ localStorage.removeItem('osaka_gh_token'); }
+
 // ============================================================
 // 데이터
 // ============================================================
@@ -333,24 +399,91 @@ const DAYS = [
   }
 ];
 
-const TAG_LABELS = {
-  "tag-food":"식사","tag-transport":"이동","tag-sight":"관광",
-  "tag-shop":"쇼핑","tag-hotel":"숙박","tag-reserve":"예약",
-  "tag-checkout":"체크아웃","tag-drink":"음료"
-};
-const TAG_LABELS_JP = {
-  "tag-food":"食事","tag-transport":"移動","tag-sight":"観光",
-  "tag-shop":"ショッピング","tag-hotel":"宿泊","tag-reserve":"予約",
-  "tag-checkout":"チェックアウト","tag-drink":"飲み物"
-};
+const TAG_LABELS    = {"tag-food":"식사","tag-transport":"이동","tag-sight":"관광","tag-shop":"쇼핑","tag-hotel":"숙박","tag-reserve":"예약","tag-checkout":"체크아웃","tag-drink":"음료"};
+const TAG_LABELS_JP = {"tag-food":"食事","tag-transport":"移動","tag-sight":"観光","tag-shop":"ショッピング","tag-hotel":"宿泊","tag-reserve":"予約","tag-checkout":"チェックアウト","tag-drink":"飲み物"};
 
 // ============================================================
 // 상태
 // ============================================================
 let currentLang = 'ko';
-let currentDay = 0;
-let modalMode = null; // 'edit' | 'add'
-let editTarget = null; // {dayIdx, evIdx}
+let currentDay  = 0;
+let modalMode   = null;
+let editTarget  = null;
+let isSaving    = false;
+
+// ============================================================
+// 토스트
+// ============================================================
+let toastTimer;
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.className = 'toast'; }, 3000);
+}
+
+// ============================================================
+// GitHub API — 파일 SHA 조회 → 내용 업데이트
+// ============================================================
+async function saveToGitHub() {
+  const token = getToken();
+  if (!token) {
+    showToast('⚙️ 설정에서 토큰을 먼저 입력해줘', 'err');
+    return false;
+  }
+  if (isSaving) return false;
+  isSaving = true;
+  showToast('💾 저장 중...', '');
+
+  try {
+    // 1) 현재 파일 SHA 가져오기
+    const metaRes = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}?ref=${GH_BRANCH}`,
+      { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } }
+    );
+    if (!metaRes.ok) throw new Error('파일 SHA 조회 실패 (' + metaRes.status + ')');
+    const meta = await metaRes.json();
+    const sha = meta.sha;
+
+    // 2) 현재 HTML에서 DAYS 데이터 부분만 교체한 새 파일 생성
+    const currentHTML = document.documentElement.outerHTML;
+    const newData = JSON.stringify(DAYS, null, 2);
+    // DAYS 배열 교체 — 정확한 마커 사이를 교체
+    const marker1 = 'const DAYS = ';
+    const marker2 = '\n];\n\nconst TAG_LABELS';
+    const s = currentHTML.indexOf(marker1);
+    const e = currentHTML.indexOf(marker2);
+    if (s === -1 || e === -1) throw new Error('데이터 마커를 찾지 못했어');
+    const newHTML = currentHTML.slice(0, s + marker1.length)
+      + newData
+      + currentHTML.slice(e);
+
+    // 3) base64 인코딩
+    const encoded = btoa(unescape(encodeURIComponent(newHTML)));
+
+    // 4) PUT 요청
+    const putRes = await fetch(
+      `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE}`,
+      {
+        method: 'PUT',
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: '📅 일정 업데이트', content: encoded, sha, branch: GH_BRANCH })
+      }
+    );
+    if (!putRes.ok) {
+      const err = await putRes.json();
+      throw new Error(err.message || putRes.status);
+    }
+    showToast('✅ GitHub에 저장됐어!', 'ok');
+    isSaving = false;
+    return true;
+  } catch (e) {
+    showToast('❌ 저장 실패: ' + e.message, 'err');
+    isSaving = false;
+    return false;
+  }
+}
 
 // ============================================================
 // 렌더
@@ -369,56 +502,39 @@ function renderAll() {
 
 function renderDay(day, di) {
   const isJp = currentLang === 'jp';
-  const dateText = isJp ? day.dateJp : day.date;
-  const themeText = isJp ? day.themeJp : day.theme;
-
   let html = `
     <div class="day-header-card">
       <div class="day-num">0${di+1}</div>
       <div class="day-info">
-        <div class="di-date">${dateText}</div>
-        <div class="di-theme">${themeText}</div>
+        <div class="di-date">${isJp ? day.dateJp : day.date}</div>
+        <div class="di-theme">${isJp ? day.themeJp : day.theme}</div>
       </div>
     </div>
     <div class="timeline">`;
-
-  day.events.forEach((ev, ei) => {
-    html += renderEvent(ev, di, ei);
-  });
-
+  day.events.forEach((ev, ei) => { html += renderEvent(ev, di, ei); });
   html += `</div>
     <button class="add-ev-btn" onclick="openAddModal(${di})">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       일정 추가
     </button>`;
-
   const catSvg = `<div class="cat-float"><svg viewBox="0 0 220 120" width="50" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"/><ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"/><polygon points="44,78 34,48 60,68" fill="#111"/><polygon points="128,72 136,42 154,66" fill="#111"/><ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"/><circle cx="76" cy="82" r="13" fill="white"/><circle cx="76" cy="82" r="7" fill="#111"/><circle cx="80" cy="78" r="3" fill="white"/><circle cx="120" cy="80" r="13" fill="white"/><circle cx="120" cy="80" r="7" fill="#111"/><circle cx="124" cy="76" r="3" fill="white"/></svg></div>`;
-
   if (di === 2) {
     html += catSvg + `<div class="ending"><svg viewBox="0 0 220 120" width="64" height="36" xmlns="http://www.w3.org/2000/svg" style="opacity:.35"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#c8b898"/><ellipse cx="100" cy="112" rx="85" ry="28" fill="#c8b898"/><polygon points="44,78 34,48 60,68" fill="#c8b898"/><polygon points="128,72 136,42 154,66" fill="#c8b898"/><ellipse cx="98" cy="88" rx="64" ry="38" fill="#c8b898"/><circle cx="76" cy="82" r="13" fill="rgba(30,26,18,0.9)"/><circle cx="76" cy="82" r="7" fill="#c8b898"/><circle cx="80" cy="78" r="3" fill="rgba(30,26,18,0.9)"/><circle cx="120" cy="80" r="13" fill="rgba(30,26,18,0.9)"/><circle cx="120" cy="80" r="7" fill="#c8b898"/><circle cx="124" cy="76" r="3" fill="rgba(30,26,18,0.9)"/></svg><div class="ending-msg">즐거운 송씨네 오사카 여행이었냥~ 🐾</div></div>`;
   } else {
     html += catSvg + `<div class="hotel-footer"><strong>🏨 Attic0475</strong>4 Chome-7-5 Namba, Chuo Ward, Osaka, 542-0076</div>`;
   }
-
   return html;
 }
 
 function renderEvent(ev, di, ei) {
   const isJp = currentLang === 'jp';
-  const title = isJp && ev.titleJp ? ev.titleJp : ev.title;
-  const desc  = isJp && ev.descJp  ? ev.descJp  : ev.desc;
+  const title    = isJp && ev.titleJp ? ev.titleJp : ev.title;
+  const desc     = isJp && ev.descJp  ? ev.descJp  : ev.desc;
   const tagLabel = isJp ? (TAG_LABELS_JP[ev.tag]||ev.tag) : (TAG_LABELS[ev.tag]||ev.tag);
-  const hiClass = ev.hi ? ' hi' : '';
-
-  let badgeHtml = '';
-  if (ev.badge) badgeHtml = `<div style="margin-top:4px"><span class="pbadge ${ev.badge}">${ev.badgeText}</span></div>`;
-
-  let locHtml = '';
-  if (ev.loc) locHtml = `<div class="ev-loc">📍 ${ev.loc}</div>`;
-
-  let descHtml = '';
-  if (desc) descHtml = `<div class="ev-desc">${desc}</div>`;
-
+  const hiClass  = ev.hi ? ' hi' : '';
+  const badgeHtml = ev.badge ? `<div style="margin-top:4px"><span class="pbadge ${ev.badge}">${ev.badgeText}</span></div>` : '';
+  const locHtml   = ev.loc   ? `<div class="ev-loc">📍 ${ev.loc}</div>` : '';
+  const descHtml  = desc     ? `<div class="ev-desc">${desc}</div>` : '';
   return `
     <div class="ev${hiClass}">
       <button class="ev-edit-btn" onclick="openEditModal(${di},${ei})" title="수정">
@@ -428,92 +544,110 @@ function renderEvent(ev, di, ei) {
         <div class="ev-time">${ev.time}</div>
         <div class="ev-row">
           <span class="ev-tag ${ev.tag}">${tagLabel}</span>
-          <div>
-            <div class="ev-title">${title}</div>
-            ${descHtml}
-          </div>
+          <div><div class="ev-title">${title}</div>${descHtml}</div>
         </div>
-        ${locHtml}
-        ${badgeHtml}
+        ${locHtml}${badgeHtml}
       </div>
     </div>`;
 }
 
 // ============================================================
-// 모달
+// 일정 모달
 // ============================================================
 function openEditModal(di, ei) {
-  modalMode = 'edit';
-  editTarget = {di, ei};
+  modalMode = 'edit'; editTarget = {di, ei};
   const ev = DAYS[di].events[ei];
   document.getElementById('modal-title-text').textContent = '일정 수정';
-  document.getElementById('m-time').value = ev.time;
-  document.getElementById('m-tag').value = ev.tag;
+  document.getElementById('m-time').value  = ev.time;
+  document.getElementById('m-tag').value   = ev.tag;
   document.getElementById('m-title').value = ev.title;
-  document.getElementById('m-desc').value = ev.desc || '';
-  document.getElementById('m-loc').value = ev.loc || '';
+  document.getElementById('m-desc').value  = ev.desc || '';
+  document.getElementById('m-loc').value   = ev.loc  || '';
   document.getElementById('btn-delete').style.display = 'block';
   document.getElementById('modal').classList.add('open');
 }
 
 function openAddModal(di) {
-  modalMode = 'add';
-  editTarget = {di, ei: null};
+  modalMode = 'add'; editTarget = {di, ei: null};
   document.getElementById('modal-title-text').textContent = '일정 추가';
-  document.getElementById('m-time').value = '';
-  document.getElementById('m-tag').value = 'tag-food';
+  document.getElementById('m-time').value  = '';
+  document.getElementById('m-tag').value   = 'tag-food';
   document.getElementById('m-title').value = '';
-  document.getElementById('m-desc').value = '';
-  document.getElementById('m-loc').value = '';
+  document.getElementById('m-desc').value  = '';
+  document.getElementById('m-loc').value   = '';
   document.getElementById('btn-delete').style.display = 'none';
   document.getElementById('modal').classList.add('open');
 }
 
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-}
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+function modalBgClick(e) { if (e.target === document.getElementById('modal')) closeModal(); }
 
-function modalBgClick(e) {
-  if (e.target === document.getElementById('modal')) closeModal();
-}
-
-function saveEvent() {
+async function saveEvent() {
   const time  = document.getElementById('m-time').value.trim();
   const tag   = document.getElementById('m-tag').value;
   const title = document.getElementById('m-title').value.trim();
   const desc  = document.getElementById('m-desc').value.trim();
   const loc   = document.getElementById('m-loc').value.trim();
-  if (!title) { alert('제목을 입력해줘!'); return; }
+  if (!title) { showToast('제목을 입력해줘!', 'err'); return; }
 
   const {di, ei} = editTarget;
   if (modalMode === 'edit') {
     const ev = DAYS[di].events[ei];
-    ev.time = time || ev.time;
-    ev.tag = tag;
-    ev.title = title;
-    ev.titleJp = title; // 일본어는 동일하게 유지
-    ev.desc = desc;
-    ev.descJp = desc;
-    ev.loc = loc;
+    ev.time = time || ev.time; ev.tag = tag;
+    ev.title = title; ev.titleJp = title;
+    ev.desc = desc; ev.descJp = desc; ev.loc = loc;
   } else {
-    // 추가 후 시간 순 정렬
-    DAYS[di].events.push({
-      time: time || '00:00', tag, hi: false,
-      title, titleJp: title,
-      desc, descJp: desc, loc
-    });
+    DAYS[di].events.push({ time: time||'00:00', tag, hi:false, title, titleJp:title, desc, descJp:desc, loc });
     DAYS[di].events.sort((a,b) => a.time.localeCompare(b.time));
   }
   closeModal();
   renderAll();
+  await saveToGitHub();
 }
 
-function deleteEvent() {
+async function deleteEvent() {
   if (!confirm('이 일정을 삭제할까요?')) return;
   const {di, ei} = editTarget;
   DAYS[di].events.splice(ei, 1);
   closeModal();
   renderAll();
+  await saveToGitHub();
+}
+
+// ============================================================
+// 설정 모달
+// ============================================================
+function openSetting() {
+  renderSettingStatus();
+  document.getElementById('s-token').value = getToken() ? '●'.repeat(20) : '';
+  document.getElementById('setting-modal').classList.add('open');
+}
+function closeSetting() { document.getElementById('setting-modal').classList.remove('open'); }
+function settingBgClick(e) { if (e.target === document.getElementById('setting-modal')) closeSetting(); }
+
+function renderSettingStatus() {
+  const area = document.getElementById('setting-status-area');
+  const hasToken = !!getToken();
+  area.innerHTML = `<div class="setting-status ${hasToken?'connected':'disconnected'}">
+    <span class="status-dot ${hasToken?'dot-ok':'dot-no'}"></span>
+    <span>${hasToken ? '✅ 토큰 연결됨 — 수정사항이 GitHub에 자동 저장돼' : '❌ 토큰 없음 — 수정해도 저장이 안 돼'}</span>
+  </div>`;
+}
+
+function saveToken() {
+  const raw = document.getElementById('s-token').value.trim();
+  if (!raw || raw.includes('●')) { showToast('토큰을 다시 입력해줘', 'err'); return; }
+  setToken(raw);
+  renderSettingStatus();
+  showToast('✅ 토큰 저장 완료!', 'ok');
+}
+
+function clearToken() {
+  if (!confirm('저장된 토큰을 삭제할까요?')) return;
+  clearTokenStorage();
+  document.getElementById('s-token').value = '';
+  renderSettingStatus();
+  showToast('토큰이 삭제됐어', '');
 }
 
 // ============================================================
@@ -525,8 +659,7 @@ function setLang(lang) {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
   });
   document.querySelectorAll('[data-ko]').forEach(el => {
-    const txt = el.getAttribute('data-' + lang) || el.getAttribute('data-ko');
-    el.innerHTML = txt;
+    el.innerHTML = el.getAttribute('data-' + lang) || el.getAttribute('data-ko');
   });
   document.documentElement.lang = lang === 'jp' ? 'ja' : 'ko';
   renderAll();
@@ -537,13 +670,11 @@ function openDays() {
   document.getElementById('screen-days').style.display = 'block';
   window.scrollTo(0,0);
 }
-
 function goBack() {
   document.getElementById('screen-days').style.display = 'none';
   document.getElementById('screen-main').style.display = 'block';
   window.scrollTo(0,0);
 }
-
 function switchDay(idx) {
   currentDay = idx;
   document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i === idx));
