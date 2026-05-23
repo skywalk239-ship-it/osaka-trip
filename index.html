@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
+<html lang="ko" style="-webkit-touch-callout: none;"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>송씨네 오사카 여행</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&amp;family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
 <style>
 :root {
   --cream:#f0e8d5; --cream2:#e2d4b8; --cream3:#c8b898;
@@ -164,15 +162,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .token-hint{font-size:10.5px;color:var(--text3);line-height:1.6;margin-bottom:14px;padding:10px 12px;background:rgba(240,232,210,0.05);border-radius:10px;border:1px solid var(--gb2)}
 </style>
 </head>
-<body>
+<body style="-webkit-text-size-adjust: 100%;">
 <div class="app">
 
 <!-- ===== 메인 카드 ===== -->
-<div id="screen-main">
+<div id="screen-main" style="display: none;">
   <div class="main-card">
     <div class="main-card-top" style="justify-content:space-between">
       <button class="setting-btn" onclick="openSetting()" title="GitHub 연동 설정">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
       </button>
       <div class="lang-toggle">
         <button class="active" onclick="setLang('ko')">KO</button>
@@ -181,20 +179,20 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
     <div class="cat-main">
       <svg viewBox="0 0 220 120" width="160" height="88" xmlns="http://www.w3.org/2000/svg">
-        <path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"/>
-        <ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"/>
-        <polygon points="44,78 34,48 60,68" fill="#111"/>
-        <polygon points="128,72 136,42 154,66" fill="#111"/>
-        <ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"/>
-        <circle cx="76" cy="82" r="13" fill="white"/>
-        <circle cx="76" cy="82" r="7" fill="#111"/>
-        <circle cx="80" cy="78" r="3" fill="white"/>
-        <circle cx="120" cy="80" r="13" fill="white"/>
-        <circle cx="120" cy="80" r="7" fill="#111"/>
-        <circle cx="124" cy="76" r="3" fill="white"/>
+        <path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"></path>
+        <ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"></ellipse>
+        <polygon points="44,78 34,48 60,68" fill="#111"></polygon>
+        <polygon points="128,72 136,42 154,66" fill="#111"></polygon>
+        <ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"></ellipse>
+        <circle cx="76" cy="82" r="13" fill="white"></circle>
+        <circle cx="76" cy="82" r="7" fill="#111"></circle>
+        <circle cx="80" cy="78" r="3" fill="white"></circle>
+        <circle cx="120" cy="80" r="13" fill="white"></circle>
+        <circle cx="120" cy="80" r="7" fill="#111"></circle>
+        <circle cx="124" cy="76" r="3" fill="white"></circle>
       </svg>
     </div>
-    <div class="card-title" data-ko="송씨네 가족<br><span class='hl'>오사카 여행 🍜</span>" data-jp="ソン家<br><span class='hl'>大阪旅行 🍜</span>">송씨네 가족<br><span class="hl">오사카 여행 🍜</span></div>
+    <div class="card-title" data-ko="송씨네 가족&lt;br&gt;&lt;span class='hl'&gt;오사카 여행 🍜&lt;/span&gt;" data-jp="ソン家&lt;br&gt;&lt;span class='hl'&gt;大阪旅行 🍜&lt;/span&gt;">송씨네 가족<br><span class="hl">오사카 여행 🍜</span></div>
     <div class="card-sub" data-ko="2025 · 6월 6일(토) ~ 8일(월) · 2박 3일" data-jp="2025 · 6月6日(土)〜8日(月) · 2泊3日">2025 · 6월 6일(토) ~ 8일(월) · 2박 3일</div>
     <div class="flight-badge">
       <span class="dir dir-dep" data-ko="출국" data-jp="出国">출국</span>
@@ -234,14 +232,14 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       </div>
     </div>
     <button class="cta-btn" onclick="openDays()">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
       <span data-ko="일정 보기 →" data-jp="スケジュールを見る →">일정 보기 →</span>
     </button>
   </div>
 </div>
 
 <!-- ===== 일정 화면 ===== -->
-<div id="screen-days">
+<div id="screen-days" style="display: block;">
   <div class="days-header">
     <button class="back-btn" onclick="goBack()">← <span data-ko="메인" data-jp="メイン">메인</span></button>
     <span class="days-title" data-ko="🐱 송씨네 오사카" data-jp="🐱 ソン家 大阪">🐱 송씨네 오사카</span>
@@ -255,7 +253,381 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     <button class="tab-btn" onclick="switchDay(1)"><span class="td">DAY 2</span><span class="tn">6/7 일</span></button>
     <button class="tab-btn" onclick="switchDay(2)"><span class="td">DAY 3</span><span class="tn">6/8 월</span></button>
   </div>
-  <div id="day-panels"></div>
+  <div id="day-panels"><div class="day-panel active" id="panel-0">
+    <div class="day-header-card">
+      <div class="day-num">01</div>
+      <div class="day-info">
+        <div class="di-date">6월 6일 (토)</div>
+        <div class="di-theme">✈️ 출국 → 난바 입성</div>
+      </div>
+    </div>
+    <div class="timeline">
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(0,0)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">13:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">청주 국제공항 집결</div><div class="ev-desc">공항에서 엄빠랑 만나기 👨‍👩‍👦</div></div>
+        </div>
+        <div class="ev-loc">📍 청주 국제공항</div><div style="margin-top:4px"><span class="pbadge pb-all">전원</span></div>
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(0,1)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">14:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">비행기 체크인 &amp; 수하물 붙이기</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(0,2)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">14:20</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-food">식사</span>
+          <div><div class="ev-title">공항 내 점심식사</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(0,3)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">15:50</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-reserve">예약</span>
+          <div><div class="ev-title">✈️ RF318 — 청주 출발</div><div class="ev-desc">청주 국제공항 → 간사이 국제공항 T1</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(0,4)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">17:35</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-reserve">예약</span>
+          <div><div class="ev-title">🛬 간사이 국제공항 도착</div><div class="ev-desc">입국 심사 + 짐 수령 (약 40분)</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(0,5)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">18:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">난카이 라피트 or 공항급행 탑승</div><div class="ev-desc">간사이공항 → 난바 약 40~50분</div></div>
+        </div>
+        <div class="ev-loc">📍 간사이공항 전철 승강장</div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(0,6)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">19:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-hotel">숙박</span>
+          <div><div class="ev-title">숙소 체크인 🏨</div></div>
+        </div>
+        <div class="ev-loc">📍 Attic0475, 난바</div><div style="margin-top:4px"><span class="pbadge pb-all">전원</span></div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(0,7)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">20:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-sight">관광</span>
+          <div><div class="ev-title">도톤보리 리버크루즈 🚢</div></div>
+        </div>
+        <div class="ev-loc">📍 도톤보리</div><div style="margin-top:4px"><span class="pbadge pb-hyejin">혜진</span></div>
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(0,8)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">21:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-sight">관광</span>
+          <div><div class="ev-title">도톤보리 야경감상 🌃</div></div>
+        </div>
+        <div class="ev-loc">📍 에비스바시 다리</div><div style="margin-top:4px"><span class="pbadge pb-hyejin">혜진</span></div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(0,9)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">21:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-food">식사</span>
+          <div><div class="ev-title">라이프 저녁 장보기 🛒</div></div>
+        </div>
+        <div class="ev-loc">📍 라이프 센트럴스퀘어 난바점</div>
+      </div>
+    </div></div>
+    <button class="add-ev-btn" onclick="openAddModal(0)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      일정 추가
+    </button><div class="cat-float"><svg viewBox="0 0 220 120" width="50" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"></path><ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"></ellipse><polygon points="44,78 34,48 60,68" fill="#111"></polygon><polygon points="128,72 136,42 154,66" fill="#111"></polygon><ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"></ellipse><circle cx="76" cy="82" r="13" fill="white"></circle><circle cx="76" cy="82" r="7" fill="#111"></circle><circle cx="80" cy="78" r="3" fill="white"></circle><circle cx="120" cy="80" r="13" fill="white"></circle><circle cx="120" cy="80" r="7" fill="#111"></circle><circle cx="124" cy="76" r="3" fill="white"></circle></svg></div><div class="hotel-footer"><strong>🏨 Attic0475</strong>4 Chome-7-5 Namba, Chuo Ward, Osaka, 542-0076</div></div><div class="day-panel" id="panel-1">
+    <div class="day-header-card">
+      <div class="day-num">02</div>
+      <div class="day-info">
+        <div class="di-date">6월 7일 (일)</div>
+        <div class="di-theme">👘 기모노 × 우메다 × 하루카스</div>
+      </div>
+    </div>
+    <div class="timeline">
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(1,0)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">09:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">숙소 출발</div><div class="ev-desc">닛폰바시역 → 덴진바시스지로쿠초메</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(1,1)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">10:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-sight">관광</span>
+          <div><div class="ev-title">기모노 체험 👘</div></div>
+        </div>
+        <div class="ev-loc">📍 오사카 시립주택 박물관</div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(1,2)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">11:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-food">식사</span>
+          <div><div class="ev-title">덴진바시 상점가 점심 🍜</div></div>
+        </div>
+        <div class="ev-loc">📍 덴진바시상점가</div>
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(1,3)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">14:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">우메다로 이동</div><div class="ev-desc">텐마역 → 오사카역</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(1,4)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">14:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-shop">쇼핑</span>
+          <div><div class="ev-title">한큐백화점 &amp; 우메다공중정원 🌿</div></div>
+        </div>
+        <div class="ev-loc">📍 우메다</div>
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(1,5)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">17:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">덴노지로 이동</div><div class="ev-desc">우메다 미도스지선 → 덴노지</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(1,6)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">18:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-sight">관광</span>
+          <div><div class="ev-title">하루카스 300 전망대 야경 🌆</div></div>
+        </div>
+        <div class="ev-loc">📍 아베노 하루카스, 덴노지</div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(1,7)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">19:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-food">식사</span>
+          <div><div class="ev-title">아베노 저녁 식사 🍽️</div><div class="ev-desc">551호라이 / 이치란 / 다루마도조 등</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(1,8)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">20:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-transport">이동</span>
+          <div><div class="ev-title">난바 복귀</div><div class="ev-desc">덴노지 미도스지선 → 난바</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(1,9)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">20:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-shop">쇼핑</span>
+          <div><div class="ev-title">난바 쇼핑 🛍️</div><div class="ev-desc">다이소 / 돈키호테 / 다이코쿠드럭스토어</div></div>
+        </div>
+        
+      </div>
+    </div></div>
+    <button class="add-ev-btn" onclick="openAddModal(1)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      일정 추가
+    </button><div class="cat-float"><svg viewBox="0 0 220 120" width="50" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"></path><ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"></ellipse><polygon points="44,78 34,48 60,68" fill="#111"></polygon><polygon points="128,72 136,42 154,66" fill="#111"></polygon><ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"></ellipse><circle cx="76" cy="82" r="13" fill="white"></circle><circle cx="76" cy="82" r="7" fill="#111"></circle><circle cx="80" cy="78" r="3" fill="white"></circle><circle cx="120" cy="80" r="13" fill="white"></circle><circle cx="120" cy="80" r="7" fill="#111"></circle><circle cx="124" cy="76" r="3" fill="white"></circle></svg></div><div class="hotel-footer"><strong>🏨 Attic0475</strong>4 Chome-7-5 Namba, Chuo Ward, Osaka, 542-0076</div></div><div class="day-panel" id="panel-2">
+    <div class="day-header-card">
+      <div class="day-num">03</div>
+      <div class="day-info">
+        <div class="di-date">6월 8일 (월)</div>
+        <div class="di-theme">⛩️ 야사카 신사 → 귀국</div>
+      </div>
+    </div>
+    <div class="timeline">
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(2,0)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">06:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-sight">관광</span>
+          <div><div class="ev-title">난바 야사카 신사 구경 ⛩️</div></div>
+        </div>
+        <div class="ev-loc">📍 야사카 신사, 난바</div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(2,1)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">07:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-checkout">체크아웃</span>
+          <div><div class="ev-title">숙소 체크아웃 &amp; 공항 이동</div><div class="ev-desc">난바역 → 난카이 라피트 탑승 (약 40분)</div></div>
+        </div>
+        <div style="margin-top:4px"><span class="pbadge pb-all">전원</span></div>
+      </div>
+    </div>
+    <div class="ev">
+      <button class="ev-edit-btn" onclick="openEditModal(2,2)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">07:30</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-food">식사</span>
+          <div><div class="ev-title">아침식사 🍙</div><div class="ev-desc">편의점 or 공항 내 식당</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(2,3)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">08:00</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-reserve">예약</span>
+          <div><div class="ev-title">간사이 국제공항 T1 도착</div><div class="ev-desc">출국 수속 &amp; 면세점 구경</div></div>
+        </div>
+        <div class="ev-loc">📍 간사이공항 T1</div>
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(2,4)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">10:40</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-reserve">예약</span>
+          <div><div class="ev-title">✈️ TW312 — 간사이 출발</div><div class="ev-desc">간사이 국제공항 T1 → 대구 국제공항</div></div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="ev hi">
+      <button class="ev-edit-btn" onclick="openEditModal(2,5)" title="수정">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+      </button>
+      <div class="ev-inner">
+        <div class="ev-time">12:10</div>
+        <div class="ev-row">
+          <span class="ev-tag tag-reserve">예약</span>
+          <div><div class="ev-title">🛬 대구 국제공항 도착</div></div>
+        </div>
+        
+      </div>
+    </div></div>
+    <button class="add-ev-btn" onclick="openAddModal(2)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      일정 추가
+    </button><div class="cat-float"><svg viewBox="0 0 220 120" width="50" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#111"></path><ellipse cx="100" cy="112" rx="85" ry="28" fill="#111"></ellipse><polygon points="44,78 34,48 60,68" fill="#111"></polygon><polygon points="128,72 136,42 154,66" fill="#111"></polygon><ellipse cx="98" cy="88" rx="64" ry="38" fill="#111"></ellipse><circle cx="76" cy="82" r="13" fill="white"></circle><circle cx="76" cy="82" r="7" fill="#111"></circle><circle cx="80" cy="78" r="3" fill="white"></circle><circle cx="120" cy="80" r="13" fill="white"></circle><circle cx="120" cy="80" r="7" fill="#111"></circle><circle cx="124" cy="76" r="3" fill="white"></circle></svg></div><div class="ending"><svg viewBox="0 0 220 120" width="64" height="36" xmlns="http://www.w3.org/2000/svg" style="opacity:.35"><path d="M178 105 Q200 90 194 68 Q190 56 180 62 Q174 68 180 80 Q186 92 178 103" fill="#c8b898"></path><ellipse cx="100" cy="112" rx="85" ry="28" fill="#c8b898"></ellipse><polygon points="44,78 34,48 60,68" fill="#c8b898"></polygon><polygon points="128,72 136,42 154,66" fill="#c8b898"></polygon><ellipse cx="98" cy="88" rx="64" ry="38" fill="#c8b898"></ellipse><circle cx="76" cy="82" r="13" fill="rgba(30,26,18,0.9)"></circle><circle cx="76" cy="82" r="7" fill="#c8b898"></circle><circle cx="80" cy="78" r="3" fill="rgba(30,26,18,0.9)"></circle><circle cx="120" cy="80" r="13" fill="rgba(30,26,18,0.9)"></circle><circle cx="120" cy="80" r="7" fill="#c8b898"></circle><circle cx="124" cy="76" r="3" fill="rgba(30,26,18,0.9)"></circle></svg><div class="ending-msg">즐거운 송씨네 오사카 여행이었냥~ 🐾</div></div></div></div>
 </div>
 
 <!-- ===== 모달 ===== -->
@@ -299,7 +671,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
     </div>
     <div class="modal-btns">
       <button class="btn-save" onclick="saveEvent()">저장</button>
-      <button class="btn-delete" id="btn-delete" onclick="deleteEvent()" style="display:none">삭제</button>
+      <button class="btn-delete" id="btn-delete" onclick="deleteEvent()" style="display: block;">삭제</button>
       <button class="btn-cancel" onclick="closeModal()">취소</button>
     </div>
   </div>
@@ -313,7 +685,10 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
       <span>⚙️ GitHub 연동 설정</span>
       <button class="modal-close" onclick="closeSetting()">✕</button>
     </div>
-    <div id="setting-status-area"></div>
+    <div id="setting-status-area"><div class="setting-status connected">
+    <span class="status-dot dot-ok"></span>
+    <span>✅ 토큰 연결됨 — 수정사항이 GitHub에 자동 저장돼</span>
+  </div></div>
     <div class="token-hint">
       🔑 GitHub Personal Access Token을 입력하면 일정 수정사항이 자동으로 저장돼.<br>
       토큰은 이 기기의 브라우저에만 보관되고 외부로 전송되지 않아.<br><br>
@@ -332,7 +707,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 </div>
 
 <!-- 토스트 -->
-<div class="toast" id="toast"></div>
+<div class="toast show " id="toast">💾 저장 중...</div>
 
 </div><!-- .app -->
 
@@ -354,49 +729,300 @@ function clearTokenStorage(){ localStorage.removeItem('osaka_gh_token'); }
 // ============================================================
 const DAYS = [
   {
-    date:"6월 6일 (토)", dateJp:"6月6日（土）",
-    theme:"✈️ 출국 → 난바 입성", themeJp:"✈️ 出国 → なんば上陸",
-    events:[
-      {time:"13:50",tag:"tag-transport",hi:true, title:"청주 국제공항 집결",titleJp:"清州国際空港 集合",desc:"공항에서 엄빠랑 만나기 👨‍👩‍👦",descJp:"ご両親と合流 👨‍👩‍👦",loc:"청주 국제공항",badge:"pb-all",badgeText:"전원"},
-      {time:"14:00",tag:"tag-transport",hi:false,title:"비행기 체크인 & 수하물 붙이기",titleJp:"搭乗手続き・手荷物預け",desc:"",descJp:"",loc:""},
-      {time:"14:20",tag:"tag-food",hi:false,title:"공항 내 점심식사",titleJp:"空港内ランチ",desc:"",descJp:"",loc:""},
-      {time:"15:50",tag:"tag-reserve",hi:true, title:"✈️ RF318 — 청주 출발",titleJp:"✈️ RF318 — 清州 出発",desc:"청주 국제공항 → 간사이 국제공항 T1",descJp:"清州国際空港 → 関西国際空港 T1",loc:""},
-      {time:"17:35",tag:"tag-reserve",hi:true, title:"🛬 간사이 국제공항 도착",titleJp:"🛬 関西国際空港 到着",desc:"입국 심사 + 짐 수령 (약 40분)",descJp:"入国審査・荷物受取（約40分）",loc:""},
-      {time:"18:30",tag:"tag-transport",hi:false,title:"난카이 라피트 or 공항급행 탑승",titleJp:"南海ラピートまたは空港急行",desc:"간사이공항 → 난바 약 40~50분",descJp:"関西空港 → なんば 約40〜50分",loc:"간사이공항 전철 승강장"},
-      {time:"19:30",tag:"tag-hotel",hi:true, title:"숙소 체크인 🏨",titleJp:"チェックイン 🏨",desc:"",descJp:"",loc:"Attic0475, 난바",badge:"pb-all",badgeText:"전원"},
-      {time:"20:30",tag:"tag-sight",hi:true, title:"도톤보리 리버크루즈 🚢",titleJp:"道頓堀 リバークルーズ 🚢",desc:"",descJp:"",loc:"도톤보리",badge:"pb-hyejin",badgeText:"혜진"},
-      {time:"21:00",tag:"tag-sight",hi:false,title:"도톤보리 야경감상 🌃",titleJp:"道頓堀 夜景鑑賞 🌃",desc:"",descJp:"",loc:"에비스바시 다리",badge:"pb-hyejin",badgeText:"혜진"},
-      {time:"21:30",tag:"tag-food",hi:true, title:"라이프 저녁 장보기 🛒",titleJp:"ライフ 夕食買い物 🛒",desc:"",descJp:"",loc:"라이프 센트럴스퀘어 난바점"}
+    "date": "6월 6일 (토)",
+    "dateJp": "6月6日（土）",
+    "theme": "✈️ 출국 → 난바 입성",
+    "themeJp": "✈️ 出国 → なんば上陸",
+    "events": [
+      {
+        "time": "13:30",
+        "tag": "tag-transport",
+        "hi": true,
+        "title": "청주 국제공항 집결",
+        "titleJp": "청주 국제공항 집결",
+        "desc": "공항에서 엄빠랑 만나기 👨‍👩‍👦",
+        "descJp": "공항에서 엄빠랑 만나기 👨‍👩‍👦",
+        "loc": "청주 국제공항",
+        "badge": "pb-all",
+        "badgeText": "전원"
+      },
+      {
+        "time": "14:00",
+        "tag": "tag-transport",
+        "hi": false,
+        "title": "비행기 체크인 & 수하물 붙이기",
+        "titleJp": "搭乗手続き・手荷物預け",
+        "desc": "",
+        "descJp": "",
+        "loc": ""
+      },
+      {
+        "time": "14:20",
+        "tag": "tag-food",
+        "hi": false,
+        "title": "공항 내 점심식사",
+        "titleJp": "空港内ランチ",
+        "desc": "",
+        "descJp": "",
+        "loc": ""
+      },
+      {
+        "time": "15:50",
+        "tag": "tag-reserve",
+        "hi": true,
+        "title": "✈️ RF318 — 청주 출발",
+        "titleJp": "✈️ RF318 — 清州 出発",
+        "desc": "청주 국제공항 → 간사이 국제공항 T1",
+        "descJp": "清州国際空港 → 関西国際空港 T1",
+        "loc": ""
+      },
+      {
+        "time": "17:35",
+        "tag": "tag-reserve",
+        "hi": true,
+        "title": "🛬 간사이 국제공항 도착",
+        "titleJp": "🛬 関西国際空港 到着",
+        "desc": "입국 심사 + 짐 수령 (약 40분)",
+        "descJp": "入国審査・荷物受取（約40分）",
+        "loc": ""
+      },
+      {
+        "time": "18:30",
+        "tag": "tag-transport",
+        "hi": false,
+        "title": "난카이 라피트 or 공항급행 탑승",
+        "titleJp": "南海ラピートまたは空港急行",
+        "desc": "간사이공항 → 난바 약 40~50분",
+        "descJp": "関西空港 → なんば 約40〜50分",
+        "loc": "간사이공항 전철 승강장"
+      },
+      {
+        "time": "19:30",
+        "tag": "tag-hotel",
+        "hi": true,
+        "title": "숙소 체크인 🏨",
+        "titleJp": "チェックイン 🏨",
+        "desc": "",
+        "descJp": "",
+        "loc": "Attic0475, 난바",
+        "badge": "pb-all",
+        "badgeText": "전원"
+      },
+      {
+        "time": "20:30",
+        "tag": "tag-sight",
+        "hi": true,
+        "title": "도톤보리 리버크루즈 🚢",
+        "titleJp": "道頓堀 リバークルーズ 🚢",
+        "desc": "",
+        "descJp": "",
+        "loc": "도톤보리",
+        "badge": "pb-hyejin",
+        "badgeText": "혜진"
+      },
+      {
+        "time": "21:00",
+        "tag": "tag-sight",
+        "hi": false,
+        "title": "도톤보리 야경감상 🌃",
+        "titleJp": "道頓堀 夜景鑑賞 🌃",
+        "desc": "",
+        "descJp": "",
+        "loc": "에비스바시 다리",
+        "badge": "pb-hyejin",
+        "badgeText": "혜진"
+      },
+      {
+        "time": "21:30",
+        "tag": "tag-food",
+        "hi": true,
+        "title": "라이프 저녁 장보기 🛒",
+        "titleJp": "ライフ 夕食買い物 🛒",
+        "desc": "",
+        "descJp": "",
+        "loc": "라이프 센트럴스퀘어 난바점"
+      }
     ]
   },
   {
-    date:"6월 7일 (일)", dateJp:"6月7日（日）",
-    theme:"👘 기모노 × 우메다 × 하루카스", themeJp:"👘 着物 × 梅田 × ハルカス",
-    events:[
-      {time:"09:30",tag:"tag-transport",hi:false,title:"숙소 출발",titleJp:"宿泊先 出発",desc:"닛폰바시역 → 덴진바시스지로쿠초메",descJp:"日本橋駅 → 天神橋筋六丁目",loc:""},
-      {time:"10:00",tag:"tag-sight",hi:true, title:"기모노 체험 👘",titleJp:"着物体験 👘",desc:"",descJp:"",loc:"오사카 시립주택 박물관"},
-      {time:"11:30",tag:"tag-food",hi:true, title:"덴진바시 상점가 점심 🍜",titleJp:"天神橋筋商店街 ランチ 🍜",desc:"",descJp:"",loc:"덴진바시상점가"},
-      {time:"14:00",tag:"tag-transport",hi:false,title:"우메다로 이동",titleJp:"梅田へ移動",desc:"텐마역 → 오사카역",descJp:"天満駅 → 大阪駅",loc:""},
-      {time:"14:30",tag:"tag-shop",hi:true, title:"한큐백화점 & 우메다공중정원 🌿",titleJp:"阪急百貨店 & 梅田スカイビル 🌿",desc:"",descJp:"",loc:"우메다"},
-      {time:"17:30",tag:"tag-transport",hi:false,title:"덴노지로 이동",titleJp:"天王寺へ移動",desc:"우메다 미도스지선 → 덴노지",descJp:"梅田 御堂筋線 → 天王寺",loc:""},
-      {time:"18:00",tag:"tag-sight",hi:true, title:"하루카스 300 전망대 야경 🌆",titleJp:"ハルカス300 展望台 夜景 🌆",desc:"",descJp:"",loc:"아베노 하루카스, 덴노지"},
-      {time:"19:30",tag:"tag-food",hi:true, title:"아베노 저녁 식사 🍽️",titleJp:"あべの 夕食 🍽️",desc:"551호라이 / 이치란 / 다루마도조 등",descJp:"551蓬莱 / 一蘭 / だるまどじょう など",loc:""},
-      {time:"20:00",tag:"tag-transport",hi:false,title:"난바 복귀",titleJp:"なんばへ帰還",desc:"덴노지 미도스지선 → 난바",descJp:"天王寺 御堂筋線 → なんば",loc:""},
-      {time:"20:30",tag:"tag-shop",hi:false,title:"난바 쇼핑 🛍️",titleJp:"なんば ショッピング 🛍️",desc:"다이소 / 돈키호테 / 다이코쿠드럭스토어",descJp:"ダイソー / ドン・キホーテ / ダイコクドラッグ",loc:""}
+    "date": "6월 7일 (일)",
+    "dateJp": "6月7日（日）",
+    "theme": "👘 기모노 × 우메다 × 하루카스",
+    "themeJp": "👘 着物 × 梅田 × ハルカス",
+    "events": [
+      {
+        "time": "09:30",
+        "tag": "tag-transport",
+        "hi": false,
+        "title": "숙소 출발",
+        "titleJp": "宿泊先 出発",
+        "desc": "닛폰바시역 → 덴진바시스지로쿠초메",
+        "descJp": "日本橋駅 → 天神橋筋六丁目",
+        "loc": ""
+      },
+      {
+        "time": "10:00",
+        "tag": "tag-sight",
+        "hi": true,
+        "title": "기모노 체험 👘",
+        "titleJp": "着物体験 👘",
+        "desc": "",
+        "descJp": "",
+        "loc": "오사카 시립주택 박물관"
+      },
+      {
+        "time": "11:30",
+        "tag": "tag-food",
+        "hi": true,
+        "title": "덴진바시 상점가 점심 🍜",
+        "titleJp": "天神橋筋商店街 ランチ 🍜",
+        "desc": "",
+        "descJp": "",
+        "loc": "덴진바시상점가"
+      },
+      {
+        "time": "14:00",
+        "tag": "tag-transport",
+        "hi": false,
+        "title": "우메다로 이동",
+        "titleJp": "梅田へ移動",
+        "desc": "텐마역 → 오사카역",
+        "descJp": "天満駅 → 大阪駅",
+        "loc": ""
+      },
+      {
+        "time": "14:30",
+        "tag": "tag-shop",
+        "hi": true,
+        "title": "한큐백화점 & 우메다공중정원 🌿",
+        "titleJp": "阪急百貨店 & 梅田スカイビル 🌿",
+        "desc": "",
+        "descJp": "",
+        "loc": "우메다"
+      },
+      {
+        "time": "17:30",
+        "tag": "tag-transport",
+        "hi": false,
+        "title": "덴노지로 이동",
+        "titleJp": "天王寺へ移動",
+        "desc": "우메다 미도스지선 → 덴노지",
+        "descJp": "梅田 御堂筋線 → 天王寺",
+        "loc": ""
+      },
+      {
+        "time": "18:00",
+        "tag": "tag-sight",
+        "hi": true,
+        "title": "하루카스 300 전망대 야경 🌆",
+        "titleJp": "ハルカス300 展望台 夜景 🌆",
+        "desc": "",
+        "descJp": "",
+        "loc": "아베노 하루카스, 덴노지"
+      },
+      {
+        "time": "19:30",
+        "tag": "tag-food",
+        "hi": true,
+        "title": "아베노 저녁 식사 🍽️",
+        "titleJp": "あべの 夕食 🍽️",
+        "desc": "551호라이 / 이치란 / 다루마도조 등",
+        "descJp": "551蓬莱 / 一蘭 / だるまどじょう など",
+        "loc": ""
+      },
+      {
+        "time": "20:00",
+        "tag": "tag-transport",
+        "hi": false,
+        "title": "난바 복귀",
+        "titleJp": "なんばへ帰還",
+        "desc": "덴노지 미도스지선 → 난바",
+        "descJp": "天王寺 御堂筋線 → なんば",
+        "loc": ""
+      },
+      {
+        "time": "20:30",
+        "tag": "tag-shop",
+        "hi": false,
+        "title": "난바 쇼핑 🛍️",
+        "titleJp": "なんば ショッピング 🛍️",
+        "desc": "다이소 / 돈키호테 / 다이코쿠드럭스토어",
+        "descJp": "ダイソー / ドン・キホーテ / ダイコクドラッグ",
+        "loc": ""
+      }
     ]
   },
   {
-    date:"6월 8일 (월)", dateJp:"6月8日（月）",
-    theme:"⛩️ 야사카 신사 → 귀국", themeJp:"⛩️ 八坂神社 → 帰国",
-    events:[
-      {time:"06:00",tag:"tag-sight",hi:true, title:"난바 야사카 신사 구경 ⛩️",titleJp:"難波 八坂神社 参拝 ⛩️",desc:"",descJp:"",loc:"야사카 신사, 난바"},
-      {time:"07:00",tag:"tag-checkout",hi:true, title:"숙소 체크아웃 & 공항 이동",titleJp:"チェックアウト & 空港へ",desc:"난바역 → 난카이 라피트 탑승 (약 40분)",descJp:"なんば駅 → 南海ラピート（約40分）",loc:"",badge:"pb-all",badgeText:"전원"},
-      {time:"07:30",tag:"tag-food",hi:false,title:"아침식사 🍙",titleJp:"朝食 🍙",desc:"편의점 or 공항 내 식당",descJp:"コンビニ or 空港内レストラン",loc:""},
-      {time:"08:00",tag:"tag-reserve",hi:true, title:"간사이 국제공항 T1 도착",titleJp:"関西国際空港 T1 到着",desc:"출국 수속 & 면세점 구경",descJp:"出国手続き & 免税店",loc:"간사이공항 T1"},
-      {time:"10:40",tag:"tag-reserve",hi:true, title:"✈️ TW312 — 간사이 출발",titleJp:"✈️ TW312 — 関西 出発",desc:"간사이 국제공항 T1 → 대구 국제공항",descJp:"",loc:""},
-      {time:"12:10",tag:"tag-reserve",hi:true, title:"🛬 대구 국제공항 도착",titleJp:"🛬 大邱国際空港 到着",desc:"",descJp:"",loc:""}
+    "date": "6월 8일 (월)",
+    "dateJp": "6月8日（月）",
+    "theme": "⛩️ 야사카 신사 → 귀국",
+    "themeJp": "⛩️ 八坂神社 → 帰国",
+    "events": [
+      {
+        "time": "06:00",
+        "tag": "tag-sight",
+        "hi": true,
+        "title": "난바 야사카 신사 구경 ⛩️",
+        "titleJp": "難波 八坂神社 参拝 ⛩️",
+        "desc": "",
+        "descJp": "",
+        "loc": "야사카 신사, 난바"
+      },
+      {
+        "time": "07:00",
+        "tag": "tag-checkout",
+        "hi": true,
+        "title": "숙소 체크아웃 & 공항 이동",
+        "titleJp": "チェックアウト & 空港へ",
+        "desc": "난바역 → 난카이 라피트 탑승 (약 40분)",
+        "descJp": "なんば駅 → 南海ラピート（約40分）",
+        "loc": "",
+        "badge": "pb-all",
+        "badgeText": "전원"
+      },
+      {
+        "time": "07:30",
+        "tag": "tag-food",
+        "hi": false,
+        "title": "아침식사 🍙",
+        "titleJp": "朝食 🍙",
+        "desc": "편의점 or 공항 내 식당",
+        "descJp": "コンビニ or 空港内レストラン",
+        "loc": ""
+      },
+      {
+        "time": "08:00",
+        "tag": "tag-reserve",
+        "hi": true,
+        "title": "간사이 국제공항 T1 도착",
+        "titleJp": "関西国際空港 T1 到着",
+        "desc": "출국 수속 & 면세점 구경",
+        "descJp": "出国手続き & 免税店",
+        "loc": "간사이공항 T1"
+      },
+      {
+        "time": "10:40",
+        "tag": "tag-reserve",
+        "hi": true,
+        "title": "✈️ TW312 — 간사이 출발",
+        "titleJp": "✈️ TW312 — 関西 出発",
+        "desc": "간사이 국제공항 T1 → 대구 국제공항",
+        "descJp": "",
+        "loc": ""
+      },
+      {
+        "time": "12:10",
+        "tag": "tag-reserve",
+        "hi": true,
+        "title": "🛬 대구 국제공항 도착",
+        "titleJp": "🛬 大邱国際空港 到着",
+        "desc": "",
+        "descJp": "",
+        "loc": ""
+      }
     ]
   }
+]
 ];
 
 const TAG_LABELS    = {"tag-food":"식사","tag-transport":"이동","tag-sight":"관광","tag-shop":"쇼핑","tag-hotel":"숙박","tag-reserve":"예약","tag-checkout":"체크아웃","tag-drink":"음료"};
@@ -685,5 +1311,6 @@ function switchDay(idx) {
 // 초기 렌더
 renderAll();
 </script>
-</body>
-</html>
+
+
+</body></html>
